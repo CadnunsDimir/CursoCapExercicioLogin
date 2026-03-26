@@ -3,7 +3,7 @@ package io.github.cadnunsdimir.android.exerciciologin.screen
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import io.github.cadnunsdimir.android.exerciciologin.components.Button
-import io.github.cadnunsdimir.android.exerciciologin.enums.UserType
+import io.github.cadnunsdimir.android.exerciciologin.types.UserType
 
 @Composable
 fun LoginScreen(onLoginSuccess: (UserType) -> Unit) {

@@ -1,7 +1,7 @@
 package io.github.cadnunsdimir.android.exerciciologin
 
 import androidx.compose.runtime.Composable
-import io.github.cadnunsdimir.android.exerciciologin.enums.UserType
+import io.github.cadnunsdimir.android.exerciciologin.types.UserType
 import io.github.cadnunsdimir.android.exerciciologin.screen.AdminDashboardScreen
 import io.github.cadnunsdimir.android.exerciciologin.screen.HomeScreen
 import io.github.cadnunsdimir.android.exerciciologin.screen.LoginScreen
@@ -15,11 +15,15 @@ fun AppStateNavigation(
     onLoginSuccess: (UserType) -> Unit,
     onLogout: () -> Unit
 ) {
-    when {
-        isLoading -> SplashScreen()
-        isNotLogged -> LoginScreen(onLoginSuccess = onLoginSuccess)
-        userType == UserType.Admin -> AdminDashboardScreen(onLogout = onLogout)
-        else -> HomeScreen(onLogout = onLogout)
+    when{
+        isLoading-> SplashScreen()
+        isNotLogged-> LoginScreen(onLoginSuccess = onLoginSuccess)
+        else -> {
+            when (userType){
+                is UserType.Admin -> AdminDashboardScreen(onLogout = onLogout)
+                is UserType.User -> HomeScreen(onLogout = onLogout)
+            }
+        }
     }
 }
 
