@@ -10,10 +10,13 @@ import androidx.compose.ui.unit.dp
 import io.github.cadnunsdimir.android.exerciciologin.components.Button
 
 @Composable
-fun HomeScreen(onLogout: () -> Unit) {
+fun HomeScreen(onLogout: () -> Unit, onProfileClick: ()-> Unit, onSettingsClick: ()-> Unit) {
     Column {
         Text("Home")
         Spacer(modifier = Modifier.height(10.dp))
         Button(onLogout,"Log Out")
+        Spacer(modifier = Modifier.height(20.dp))
+        Button(onSettingsClick,"Settings")
+        Button(onProfileClick,"Profile")
     }
 }
